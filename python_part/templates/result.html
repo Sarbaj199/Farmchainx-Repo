@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Prediction Result</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f6f8fa; margin:0; padding:0; }
+    .wrap { max-width:800px; margin:40px auto; background:white; padding:20px 30px;
+            border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.08); }
+    img { max-width:100%; border-radius:8px; margin:10px 0; }
+    table { width:100%; border-collapse:collapse; margin-top:10px; }
+    th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+    th { background:#f0f0f0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Prediction Result</h1>
+
+    {% if result_image_url %}
+      <h3>Annotated Image</h3>
+      <img src="{{ result_image_url }}" alt="Result image">
+    {% endif %}
+
+    <h3>Detections</h3>
+    {% if detections %}
+      <table>
+        <tr><th>Label</th><th>Confidence</th></tr>
+        {% for d in detections %}
+          <tr>
+            <td>{{ d.label }}</td>
+            <td>{{ d.confidence }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>No objects detected.</p>
+    {% endif %}
+
+    <p><strong>Raw confidence:</strong> {{ confidence }}</p>
+    <p><strong>Calibrated confidence:</strong> {{ calibrated_confidence }}</p>
+    <p><strong>Quality score:</strong> {{ quality_score }}</p>
+    <p><strong>Request ID:</strong> {{ request_id }}</p>
+
+    <p>
+      Now you can go to the chatbot and ask questions about this image:<br>
+      <code>http://127.0.0.1:5001/chatbot</code>
+    </p>
+
+    <p><a href="/">&#8592; Back to upload page</a></p>
+  </div>
+</body>
+</html>

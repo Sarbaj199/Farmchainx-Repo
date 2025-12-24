@@ -1,0 +1,33 @@
+flask
+pillow
+ultralytics>=8.0.0
+sqlalchemy
+sentence-transformers
+
+pip install flask sqlalchemy pillow ultralytics sentence-transformers torch numpy werkzeug
+
+
+# Optional but useful for running in production
+gunicorn
+
+#python app.py [to run the code].
+#pip install -r requirements.txt
+
+ 1st terminal
+
+venv\Scripts\activate
+python app.py
+
+http://127.0.0.1:5000/
+
+
+2nd terminal
+
+venv\Scripts\activate
+python chatbot.py
+
+http://127.0.0.1:5001/chatbot
+
+
+
+
